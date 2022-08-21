@@ -12,7 +12,13 @@ Future<void> backroundHandler(RemoteMessage message) async {
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(
+      name: "aya_dazani",
+      options: FirebaseOptions(
+          apiKey: "xxx",
+          appId: "xxx",
+          messagingSenderId: "xxx",
+          projectId: "xxx"));
   FirebaseMessaging.onBackgroundMessage(backroundHandler);
   runApp(MyApp());
 }
@@ -25,7 +31,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-
   String notificationMsg = "Waiting for notifications";
   @override
   void initState() {
@@ -64,11 +69,9 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    
     return MaterialApp(
       home: Splah_Screen(),
       debugShowCheckedModeBanner: false,
     );
   }
 }
-

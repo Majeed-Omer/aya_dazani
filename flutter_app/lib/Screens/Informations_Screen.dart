@@ -55,6 +55,7 @@ class Informations_ScreenState extends State<Informations_Screen> {
               _informations[index].image,
             );
           })),
+          
           child: Card(
             color: Colors.white,
             elevation: 5.0,
