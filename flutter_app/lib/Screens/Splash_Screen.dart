@@ -15,7 +15,7 @@ class _Splah_ScreenState extends State<Splah_Screen> {
         backgroundColor: Colors.white,
         splashIconSize: 400,
           splash: Image.asset("assets/qm.png"),
-          duration: 3000,
+          duration: 2500,
           splashTransition: SplashTransition.scaleTransition,
           nextScreen: Informations_Screen()),
     );

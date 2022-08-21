@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "392307806672",
+    "project_id": "aya-dazani",
+    "storage_bucket": "aya-dazani.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:392307806672:android:2495a103391c9e11ede9d5",
+        "android_client_info": {
+          "package_name": "com.example.aya_dazani"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "392307806672-cs6hqmb511vb66rklqlsnbka527mfog6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAoClz1FGzrk2C403KBkTV4Pre7ILu0f2M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "392307806672-cs6hqmb511vb66rklqlsnbka527mfog6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
