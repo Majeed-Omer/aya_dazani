@@ -51,7 +51,6 @@ class Informations_ScreenState extends State<Informations_Screen> {
           onTap: () =>
               Navigator.push(context, MaterialPageRoute(builder: (context) {
             return Complete_Screen(
-              _informations[index].name,
               _informations[index].information,
               _informations[index].image,
             );
@@ -63,7 +62,7 @@ class Informations_ScreenState extends State<Informations_Screen> {
             child: ListTile(
               leading: Image.network(_informations[index].image, ),
               title: Text(
-                _informations[index].name,
+                "ئایا دەزانی؟",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 textAlign: TextAlign.end,
               ),

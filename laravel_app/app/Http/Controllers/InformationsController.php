@@ -27,12 +27,10 @@ class InformationsController extends Controller
     public function store(Request $request)
     {
         $input = $request->validate([
-            'name' => 'required',
             'information' => 'required',
             'image' => 'required',
         ]);
         $informations = new Informations();
-        $informations->name = $input['name'];
         $informations->information = $input['information'];
         $informations->image = $input['image'];
         $informations->save();
@@ -60,11 +58,9 @@ class InformationsController extends Controller
     public function update(Request $request, Informations $informations)
     {
         $input = $request->validate([
-            'name' => 'required',
             'information' => 'required',
             'image' => 'required',
         ]);
-        $informations->name = $input['name'];
         $informations->information = $input['information'];
         $informations->image = $input['image'];
         $informations->save();
