@@ -35,6 +35,7 @@ class Complete_Screen extends StatelessWidget {
               child: Text(
                 information,
                 textAlign: TextAlign.end,
+                style: TextStyle(fontSize: 20)
               ),
             ),
           ],
