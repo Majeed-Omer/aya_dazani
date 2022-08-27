@@ -22,7 +22,7 @@ class Complete_Screen extends StatelessWidget {
             Image.network(
               image,
               width: double.infinity,
-              height: h * 0.50,
+              height: h * 0.47,
               fit: BoxFit.fill,
             ),
             Text(

@@ -20,7 +20,6 @@ Future<void> main() async {
   //         messagingSenderId: "xxx",
   //         projectId: "xxx")); 
   await Firebase.initializeApp();   
-  
   FirebaseMessaging.onBackgroundMessage(backroundHandler);
   runApp(MyApp());
 }
