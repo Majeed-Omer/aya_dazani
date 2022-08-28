@@ -1,7 +1,9 @@
 import 'package:aya_dazani/Models/Informations.dart';
 import 'package:aya_dazani/Screens/Complete_Screen.dart';
 import 'package:aya_dazani/Services/Services_crud.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+import 'dart:async';
 
 class Informations_Screen extends StatefulWidget {
   Informations_Screen() : super();
@@ -31,8 +33,17 @@ class Informations_ScreenState extends State<Informations_Screen> {
     });
   }
 
+//   void checkConection() async {
+//     final connectivityResult = await (Connectivity().checkConnectivity());
+// if (connectivityResult == ConnectivityResult.none) {
+//   connection = false;
+// } else {
+//   connection = true;
+// }
+//   }
   @override
   Widget build(BuildContext context) {
+    
     return Scaffold(
       backgroundColor: Color.fromARGB(247, 246, 244, 244),
       key: _scaffoldKey,
@@ -45,14 +56,14 @@ class Informations_ScreenState extends State<Informations_Screen> {
         ),
         centerTitle: true,
       ),
-      body: ListView.builder(
+      body: _informations.isEmpty? Center(child: CircularProgressIndicator()) :  ListView.builder(
         itemCount: _informations.length,
         itemBuilder: (context, index) => GestureDetector(
           onTap: () =>
               Navigator.push(context, MaterialPageRoute(builder: (context) {
             return Complete_Screen(
               _informations[index].information,
-              _informations[index].image,
+             _informations[index].image,
             );
           })),
           
@@ -61,7 +72,7 @@ class Informations_ScreenState extends State<Informations_Screen> {
             elevation: 5.0,
             margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 5.0),
             child: ListTile(
-              leading: Image.network(_informations[index].image, ),
+              leading: Image.network(_informations[index].image),
               title: Text(
                 "ئایا دەزانی؟",
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
