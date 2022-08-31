@@ -25,6 +25,7 @@ class Complete_Screen extends StatelessWidget {
               height: h * 0.47,
               fit: BoxFit.fill,
             ),
+            SizedBox(height: 20),
             Text(
               "ئایا دەزانی؟",
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
