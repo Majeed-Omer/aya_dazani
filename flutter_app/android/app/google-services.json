@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:392307806672:android:2495a103391c9e11ede9d5",
+        "mobilesdk_app_id": "1:392307806672:android:6d02d9fa8265b27fede9d5",
         "android_client_info": {
-          "package_name": "com.example.aya_dazani"
+          "package_name": "com.Majeed123.aya_dazani"
         }
       },
       "oauth_client": [

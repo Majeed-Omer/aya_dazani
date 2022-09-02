@@ -12,13 +12,14 @@ Future<void> backroundHandler(RemoteMessage message) async {
 }
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  // await Firebase.initializeApp(
-  //    // name: "aya-dazani",
-  //     options: FirebaseOptions(
-  //         apiKey: "xxx",
-  //         appId: "xxx",
-  //         messagingSenderId: "xxx",
-  //         projectId: "xxx")); 
+  await Firebase.initializeApp(
+    //  name: "aya-dazani",
+    //   options: FirebaseOptions(
+    //       apiKey: "xxx",
+    //       appId: "xxx",
+    //       messagingSenderId: "xxx",
+    //       projectId: "xxx")
+          ); 
   await Firebase.initializeApp();   
   FirebaseMessaging.onBackgroundMessage(backroundHandler);
   final connectivityResult = await (Connectivity().checkConnectivity());
