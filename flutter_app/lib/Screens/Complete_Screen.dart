@@ -1,12 +1,12 @@
+import 'package:aya_dazani/Models/Informations.dart';
 import 'package:flutter/material.dart';
 
 class Complete_Screen extends StatelessWidget {
-  String information;
-  String image;
+  final Informations information;
 
-  Complete_Screen(
-    this.information,
-    this.image,
+  const Complete_Screen({
+    required this.information,
+    }
   );
 
   @override
@@ -16,32 +16,47 @@ class Complete_Screen extends StatelessWidget {
 
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SafeArea(
-        child: ListView(
-          children: [
-            Image.network(
-              image,
-              width: double.infinity,
-              height: h * 0.47,
-              fit: BoxFit.fill,
-            ),
-            SizedBox(height: 20),
-            Text(
-              "ئایا دەزانی؟",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
-              textAlign: TextAlign.center,
-            ),
-            Padding(
-              padding: EdgeInsets.symmetric(horizontal: 5),
-              child: Text(
-                information,
-                textAlign: TextAlign.end,
-                style: TextStyle(fontSize: 20)
-              ),
-            ),
-          ],
+      appBar: AppBar(
+        elevation: 0.0,
+        backgroundColor: Color.fromARGB(255, 242, 160, 65),
+        title: const Text(
+          "ئایا دەزانی؟",
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
+        centerTitle: true,
       ),
+      body: 
+      SafeArea(
+          child: ListView(
+            children: [
+              Hero(
+        transitionOnUserGestures: true,
+        tag: information,
+                child: Image.network(
+                  information.image,
+                  width: double.infinity,
+                  height: h * 0.40,
+                  fit: BoxFit.fill,
+                ),
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                "ئایا دەزانی؟",
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),
+                textAlign: TextAlign.center,
+              ),
+              Padding(
+                padding: EdgeInsets.symmetric(horizontal: 5),
+                child: Text(
+                  information.information,
+                  textAlign: TextAlign.end,
+                  style: TextStyle(fontSize: 20)
+                ),
+              ),
+            ],
+          ),
+        ),
+    
     );
   }
 }

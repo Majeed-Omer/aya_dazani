@@ -1,12 +1,12 @@
 import 'package:aya_dazani/Models/Informations.dart';
 import 'package:aya_dazani/Screens/Complete_Screen.dart';
 import 'package:aya_dazani/Services/Services_crud.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
+// ignore: unused_import
 import 'dart:async';
 
 class Informations_Screen extends StatefulWidget {
-  Informations_Screen() : super();
+ Informations_Screen() : super();
 
   @override
   Informations_ScreenState createState() => Informations_ScreenState();
@@ -33,56 +33,54 @@ class Informations_ScreenState extends State<Informations_Screen> {
     });
   }
 
-//   void checkConection() async {
-//     final connectivityResult = await (Connectivity().checkConnectivity());
-// if (connectivityResult == ConnectivityResult.none) {
-//   connection = false;
-// } else {
-//   connection = true;
-// }
-//   }
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
       backgroundColor: Color.fromARGB(247, 246, 244, 244),
       key: _scaffoldKey,
       appBar: AppBar(
         elevation: 0.0,
         backgroundColor: Color.fromARGB(255, 242, 160, 65),
-        title: Text(
+        title: const Text(
           "ئایا دەزانی؟",
-          style: TextStyle( fontWeight: FontWeight.bold),
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
         centerTitle: true,
       ),
-      body: _informations.isEmpty? Center(child: CircularProgressIndicator()) :  ListView.builder(
-        itemCount: _informations.length,
-        itemBuilder: (context, index) => GestureDetector(
-          onTap: () =>
-              Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return Complete_Screen(
-              _informations[index].information,
-             _informations[index].image,
-            );
-          })),
-          
-          child: Card(
-            color: Colors.white,
-            elevation: 5.0,
-            margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 5.0),
-            child: ListTile(
-              leading: Image.network(_informations[index].image),
-              title: Text(
-                "ئایا دەزانی؟",
-                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-                textAlign: TextAlign.end,
+      body: _informations.isEmpty
+          ? const Center(child: CircularProgressIndicator())
+          : ListView.builder(
+              itemCount: _informations.length,
+              itemBuilder: (context, index) => GestureDetector(
+                onTap: () => Navigator.push(
+                    context,
+                    PageRouteBuilder(
+                        transitionDuration: Duration(milliseconds: 350),
+                        pageBuilder: (_, __, ___) => Complete_Screen(
+                            information: _informations[index]))),
+                child: Card(
+                  color: Colors.white,
+                  elevation: 5.0,
+                  margin: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 5.0),
+                  child: ListTile(
+                    leading: Hero(
+                        transitionOnUserGestures: true,
+                        tag: _informations[index],
+                        child: Image.network(_informations[index].image)),
+                    title: const Text(
+                      "ئایا دەزانی؟",
+                      style:
+                          TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      textAlign: TextAlign.end,
+                    ),
+                    subtitle: Text(
+                      _informations[index].information,
+                      textAlign: TextAlign.end,
+                    ),
+                  ),
+                ),
               ),
-              subtitle: Text(_informations[index].information, textAlign: TextAlign.end,),
             ),
-          ),
-        ),
-      ),
     );
   }
 }
