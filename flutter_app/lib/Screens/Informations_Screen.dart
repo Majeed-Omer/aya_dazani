@@ -5,8 +5,10 @@ import 'package:flutter/material.dart';
 // ignore: unused_import
 import 'dart:async';
 
+import 'package:provider/provider.dart';
+
 class Informations_Screen extends StatefulWidget {
- Informations_Screen() : super();
+  Informations_Screen() : super();
 
   @override
   Informations_ScreenState createState() => Informations_ScreenState();
@@ -52,12 +54,15 @@ class Informations_ScreenState extends State<Informations_Screen> {
           : ListView.builder(
               itemCount: _informations.length,
               itemBuilder: (context, index) => GestureDetector(
-                onTap: () => Navigator.push(
-                    context,
-                    PageRouteBuilder(
-                        transitionDuration: Duration(milliseconds: 350),
-                        pageBuilder: (_, __, ___) => Complete_Screen(
-                            information: _informations[index]))),
+                onTap: () {
+                  Provider.of<Informations>(context, listen: false)
+                      .setInformation(_informations[index]);
+                  Navigator.push(
+                      context,
+                      PageRouteBuilder(
+                          transitionDuration: Duration(milliseconds: 350),
+                          pageBuilder: (_, __, ___) => Complete_Screen()));
+                },
                 child: Card(
                   color: Colors.white,
                   elevation: 5.0,

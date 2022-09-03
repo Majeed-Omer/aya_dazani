@@ -1,9 +1,11 @@
+import 'package:aya_dazani/Models/Informations.dart';
 import 'package:aya_dazani/Screens/Splash_Screen.dart';
 import 'package:aya_dazani/Services/local_notifications.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 Future<void> backroundHandler(RemoteMessage message) async {
   print(" This is message from background");
@@ -26,7 +28,10 @@ Future<void> main() async {
 if (connectivityResult == ConnectivityResult.none) {
   runApp(app());
 } else {
-  runApp(MyApp());
+  runApp(ChangeNotifierProvider(create: (_) => Informations(id: '', image: '', information: '', name: ''),
+    child:
+     MyApp()
+    ));
 }
   
 }

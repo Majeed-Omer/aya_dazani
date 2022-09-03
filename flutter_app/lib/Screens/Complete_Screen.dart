@@ -1,18 +1,15 @@
 import 'package:aya_dazani/Models/Informations.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class Complete_Screen extends StatelessWidget {
-  final Informations information;
-
-  const Complete_Screen({
-    required this.information,
-    }
-  );
 
   @override
   Widget build(BuildContext context) {
     final h = MediaQuery.of(context).size.height;
     final w = MediaQuery.of(context).size.width;
+    
+    Informations information = Provider.of<Informations>(context, listen: false).getInformation();
 
     return Scaffold(
       backgroundColor: Colors.white,
