@@ -16,6 +16,7 @@ class CreateInformationsTable extends Migration
         Schema::create('informations', function (Blueprint $table) {
             $table->id();
             $table->string('information');
+            $table->string('image');
             $table->timestamps();
         });
     }

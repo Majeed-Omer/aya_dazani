@@ -1,5 +1,6 @@
 import 'package:aya_dazani/Models/Informations.dart';
 import 'package:aya_dazani/Screens/Splash_Screen.dart';
+import 'package:aya_dazani/Screens/noInternet_Screen.dart';
 import 'package:aya_dazani/Services/local_notifications.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -26,9 +27,9 @@ Future<void> main() async {
   FirebaseMessaging.onBackgroundMessage(backroundHandler);
   final connectivityResult = await (Connectivity().checkConnectivity());
 if (connectivityResult == ConnectivityResult.none) {
-  runApp(app());
+  runApp(noInternet_Screen());
 } else {
-  runApp(ChangeNotifierProvider(create: (_) => Informations(id: '', image: '', information: '', name: ''),
+  runApp(ChangeNotifierProvider(create: (_) => Informations(id: '', image: '', information: ''),
     child:
      MyApp()
     ));
@@ -36,19 +37,6 @@ if (connectivityResult == ConnectivityResult.none) {
   
 }
 
-class app extends StatelessWidget {
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        backgroundColor: Colors.white,
-        body: Image.asset("assets/noconection.webp", width: double.infinity, height: double.infinity,),
-      ),
-    );
-  }
-}
 class MyApp extends StatefulWidget {
   const MyApp({Key? key}) : super(key: key);
 

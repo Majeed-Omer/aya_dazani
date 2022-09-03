@@ -19,25 +19,6 @@ class InformationsController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $input = $request->validate([
-            'information' => 'required',
-            'image' => 'required',
-        ]);
-        $informations = new Informations();
-        $informations->information = $input['information'];
-        $informations->image = $input['image'];
-        $informations->save();
-        return response()->json($informations);
-    }
-
-    /**
      * Display the specified resource.
      *
      * @param  \App\Models\Informations  $informations
@@ -46,35 +27,5 @@ class InformationsController extends Controller
     public function show(Informations $informations)
     {
         return response()->json($informations);
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Informations  $informations
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Informations $informations)
-    {
-        $input = $request->validate([
-            'information' => 'required',
-            'image' => 'required',
-        ]);
-        $informations->information = $input['information'];
-        $informations->image = $input['image'];
-        $informations->save();
-        return response()->json($informations);
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Informations  $informations
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Informations $informations)
-    {
-        return response()->json($informations->delete());
     }
 }

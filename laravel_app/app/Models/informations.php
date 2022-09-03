@@ -9,7 +9,7 @@ class Informations extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
         'information',
+        'image'
     ];
 }
