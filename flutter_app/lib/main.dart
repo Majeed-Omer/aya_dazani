@@ -1,40 +1,29 @@
 import 'package:aya_dazani/Models/Informations.dart';
 import 'package:aya_dazani/Screens/Splash_Screen.dart';
 import 'package:aya_dazani/Screens/noInternet_Screen.dart';
-import 'package:aya_dazani/Services/local_notifications.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
+import 'package:native_notify/native_notify.dart';
 
-Future<void> backroundHandler(RemoteMessage message) async {
-  print(" This is message from background");
-  print(message.notification!.title);
-  print(message.notification!.body);
-}
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp(
-    //  name: "aya-dazani",
-    //   options: FirebaseOptions(
-    //       apiKey: "xxx",
-    //       appId: "xxx",
-    //       messagingSenderId: "xxx",
-    //       projectId: "xxx")
-          ); 
-  await Firebase.initializeApp();   
-  FirebaseMessaging.onBackgroundMessage(backroundHandler);
+  SystemChrome.setPreferredOrientations(
+      [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
+  NativeNotify.initialize(
+      1673,
+      'Oa7rqUho48jubzF00qHbY0',
+      "AAAAW1deEdA:APA91bHbd9KhSGEY0Mv-qtOpjObzGJZudoPmFRKnfM3Of_imXesniEHg21Ev-nM4M1yXORqtE_GzbaO2w9gsiaLgxsjP39lzODKX3CUqUk9cAuVZpu46AuxowBjphI3rddnU_KutxGPJ",
+      null);
   final connectivityResult = await (Connectivity().checkConnectivity());
-if (connectivityResult == ConnectivityResult.none) {
-  runApp(noInternet_Screen());
-} else {
-  runApp(ChangeNotifierProvider(create: (_) => Informations(id: '', image: '', information: ''),
-    child:
-     MyApp()
-    ));
-}
-  
+  if (connectivityResult == ConnectivityResult.none) {
+    runApp(noInternet_Screen());
+  } else {
+    runApp(ChangeNotifierProvider(
+        create: (_) => Informations(id: '', image: '', information: ''),
+        child: MyApp()));
+  }
 }
 
 class MyApp extends StatefulWidget {
@@ -45,42 +34,6 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String notificationMsg = "Waiting for notifications";
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-
-    LocalNotificationService.initilize();
-
-    //Terminated State
-    FirebaseMessaging.instance.getInitialMessage().then((event) {
-      if (event != null) {
-        setState(() {
-          notificationMsg =
-              "${event.notification!.title} ${event.notification!.body} I am coming from terminated state";
-        });
-      }
-    });
-
-    // Foregrand State
-    FirebaseMessaging.onMessage.listen((event) {
-      LocalNotificationService.showNotificationOnForeground(event);
-      setState(() {
-        notificationMsg =
-            "${event.notification!.title} ${event.notification!.body} I am coming from foreground";
-      });
-    });
-
-    // background State
-    FirebaseMessaging.onMessageOpenedApp.listen((event) {
-      setState(() {
-        notificationMsg =
-            "${event.notification!.title} ${event.notification!.body} I am coming from background";
-      });
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

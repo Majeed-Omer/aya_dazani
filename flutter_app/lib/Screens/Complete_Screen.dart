@@ -44,7 +44,20 @@ class Complete_Screen extends StatelessWidget {
           ),
         ],
       ),
-    
+    bottomNavigationBar: Material(
+        color: Color.fromARGB(255, 241, 145, 36),
+        child: InkWell(
+          onTap: () {
+          },
+          child: const SizedBox(
+            height: kToolbarHeight,
+            width: double.infinity,
+            child: Center(
+              child: Icon(Icons.share, color: Colors.white,)
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
