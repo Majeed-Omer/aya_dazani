@@ -2,27 +2,26 @@ import 'package:aya_dazani/Models/Informations.dart';
 import 'package:aya_dazani/Widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:share_plus/share_plus.dart';
 
 class Complete_Screen extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final h = MediaQuery.of(context).size.height;
-    final w = MediaQuery.of(context).size.width;
-    
-    Informations information = Provider.of<Informations>(context, listen: false).getInformation();
+
+    Informations informations =
+        Provider.of<Informations>(context, listen: false).getInformation();
 
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: appbar.myAppbar(),
-      body: 
-      ListView(
+      body: ListView(
         children: [
           Hero(
-        transitionOnUserGestures: true,
-        tag: information,
+            transitionOnUserGestures: true,
+            tag: informations,
             child: Image.network(
-              information.image,
+              informations.image,
               width: double.infinity,
               height: h * 0.40,
               fit: BoxFit.fill,
@@ -35,26 +34,27 @@ class Complete_Screen extends StatelessWidget {
             textAlign: TextAlign.center,
           ),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: 5),
-            child: Text(
-              information.information,
-              textAlign: TextAlign.end,
-              style: TextStyle(fontSize: 20)
-            ),
+            padding: const EdgeInsets.symmetric(horizontal: 5),
+            child: Text(informations.information,
+                textAlign: TextAlign.end, style: const TextStyle(fontSize: 20)),
           ),
         ],
       ),
-    bottomNavigationBar: Material(
-        color: Color.fromARGB(255, 241, 145, 36),
+      bottomNavigationBar: Material(
+        color: const Color.fromARGB(255, 241, 145, 36),
         child: InkWell(
-          onTap: () {
+          onTap: () async {
+            await Share.share(informations.information,
+                subject: informations.image);
           },
           child: const SizedBox(
             height: kToolbarHeight,
             width: double.infinity,
             child: Center(
-              child: Icon(Icons.share, color: Colors.white,)
-            ),
+                child: Icon(
+              Icons.share,
+              color: Colors.white,
+            )),
           ),
         ),
       ),
