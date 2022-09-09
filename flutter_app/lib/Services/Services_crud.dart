@@ -7,7 +7,6 @@ class Services {
   static const _CREATE_TABLE_ACTION = 'CREATE_TABLE';
   static const _GET_ALL_ACTION = 'GET_ALL';
 
-
   static Future<List<Informations>> getInformations() async {
     try {
       var map = Map<String, dynamic>();
@@ -31,6 +30,8 @@ class Services {
   static List<Informations> parseResponse(String responseBody) {
     final parsed = json.decode(responseBody);
     print(parsed);
-    return parsed.map<Informations>((json) => Informations.fromJson(json)).toList();
+    return parsed
+        .map<Informations>((json) => Informations.fromJson(json))
+        .toList();
   }
 }

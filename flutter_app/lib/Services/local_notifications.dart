@@ -18,10 +18,8 @@ class LocalNotificationService {
   static void showNotificationOnForeground(RemoteMessage message) {
     final notificationDetail = NotificationDetails(
         android: AndroidNotificationDetails(
-            "com.example.aya_dazani",
-            "firebase_push_notification",
-            importance: Importance.max,
-            priority: Priority.high));
+            "com.example.aya_dazani", "firebase_push_notification",
+            importance: Importance.max, priority: Priority.high));
 
     _notificationsPlugin.show(
         DateTime.now().microsecond,

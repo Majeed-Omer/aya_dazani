@@ -4,7 +4,6 @@ import 'package:aya_dazani/Widgets/appbar.dart';
 import 'package:aya_dazani/Widgets/listview.dart';
 import 'package:flutter/material.dart';
 
-
 class Informations_Screen extends StatefulWidget {
   Informations_Screen() : super();
 
