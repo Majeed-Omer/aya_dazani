@@ -37,7 +37,7 @@ class Informations_ScreenState extends State<Informations_Screen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(247, 246, 244, 244),
+      backgroundColor: const Color.fromARGB(247, 246, 244, 244),
       key: _scaffoldKey,
       appBar: appbar.myAppbar(),
       body: _informations.isEmpty

@@ -14,13 +14,13 @@ class listview {
           Navigator.push(
               context,
               PageRouteBuilder(
-                  transitionDuration: Duration(milliseconds: 350),
+                  transitionDuration: const Duration(milliseconds: 350),
                   pageBuilder: (_, __, ___) => Complete_Screen()));
         },
         child: Card(
           color: Colors.white,
           elevation: 5.0,
-          margin: const EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 5.0),
+          margin: EdgeInsets.fromLTRB(15.0, 10.0, 15.0, 5.0),
           child: ListTile(
             leading: Hero(
                 transitionOnUserGestures: true,
