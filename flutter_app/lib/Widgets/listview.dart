@@ -26,10 +26,16 @@ class listview {
                 transitionOnUserGestures: true,
                 tag: _informations[index],
                 child: Image.network(_informations[index].image)),
-            title: const Text(
-              "ئایا دەزانی؟",
-              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
-              textAlign: TextAlign.end,
+            title: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                 Text(
+                  "ئایا دەزانی؟",
+                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  textAlign: TextAlign.end,
+                ),
+                IconButton(onPressed: (){}, icon: Icon(Icons.favorite, color: Colors.red,))
+              ],
             ),
             subtitle: Text(
               _informations[index].information,

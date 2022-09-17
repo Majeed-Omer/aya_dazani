@@ -3,7 +3,7 @@ import 'package:aya_dazani/Models/Informations.dart';
 import 'package:http/http.dart' as http;
 
 class Services {
-  static const ROOT = 'http://192.168.100.128/api/informations/';
+  static const ROOT = 'http://192.168.2.102/api/informations/';
   static const _CREATE_TABLE_ACTION = 'CREATE_TABLE';
   static const _GET_ALL_ACTION = 'GET_ALL';
 
