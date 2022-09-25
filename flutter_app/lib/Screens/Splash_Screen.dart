@@ -1,5 +1,6 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:aya_dazani/Screens/Informations_Screen.dart';
+import 'package:aya_dazani/Widgets/wrapper.dart';
 import 'package:flutter/material.dart';
 
 class Splah_Screen extends StatefulWidget {
@@ -17,7 +18,7 @@ class _Splah_ScreenState extends State<Splah_Screen> {
           splash: Image.asset("assets/qm.png"),
           duration: 2500,
           splashTransition: SplashTransition.scaleTransition,
-          nextScreen: Informations_Screen()),
+          nextScreen: bottom()),
     );
   }
 }

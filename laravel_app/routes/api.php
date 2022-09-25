@@ -22,4 +22,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::apiResources([
     '/informations' => InformationsController::class,
+    '/my_informations' => myInformationsController::class,
 ]);

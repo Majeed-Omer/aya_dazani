@@ -44,7 +44,6 @@ dependencies:
   share_plus: ^4.1.0
   is_first_run: ^1.0.0
   uuid: ^3.0.6
-  persistent_bottom_nav_bar: ^4.0.2
 
 dev_dependencies:
   flutter_test:
