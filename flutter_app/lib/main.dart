@@ -15,9 +15,8 @@ Future<void> main() async {
   print(firstRun);
   var uuid = Uuid();
   var u;
-  if(firstRun)
-  u = uuid.v4();
- print(u);
+  if (firstRun) u = uuid.v4();
+  print(u);
   SystemChrome.setPreferredOrientations(
       [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   NativeNotify.initialize(

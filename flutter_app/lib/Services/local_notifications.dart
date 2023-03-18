@@ -10,9 +10,10 @@ class LocalNotificationService {
         InitializationSettings(
             android: AndroidInitializationSettings("@mipmap/ic_launcher"));
     _notificationsPlugin.initialize(initializationSettings,
-        onSelectNotification: (String? payload) {
-      print(payload);
-    });
+    //     onSelectNotification: (String? payload) {
+    //   print(payload);
+    // }
+    );
   }
 
   static void showNotificationOnForeground(RemoteMessage message) {
